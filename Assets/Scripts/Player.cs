@@ -40,13 +40,14 @@ public class Player : MonoBehaviour
         Events.MenuOpened += onMenuOpened;
 
         m_rb = GetComponent<Rigidbody>();
-        m_equippedMasks = new List<MaskState>(){ m_startingEquippedMask, m_startingBackMask };
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
         m_switchMask.started += switchMask;
 
         m_maskEquipped = GetComponentInChildren<MaskEquipped>().gameObject;
         m_maskBack = GetComponentInChildren<MaskBack>().gameObject;
+
+        setStartingMasks(MaskState.Unmasked, MaskState.Unmasked);
     }
 
     private void onPlayerDetected(MaskState maskState)
