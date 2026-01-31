@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 
     public MaskState MaskState { get; private set; }
 
-    public Action<MaskState> MaskChanged;
 
     private void Awake()
     {
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Send the event to every listening script
-        MaskChanged?.Invoke(newState);
+        Events.MaskChanged?.Invoke(newState);
     }
 
     // Update is called once per frame
