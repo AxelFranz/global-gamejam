@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   m_spawnPosition: {x: 0, y: 0, z: 0}
-  m_startingEquippedMask: 2
+  m_startingEquippedMask: 1
   m_startingBackMask: 3
   m_nextSceneName: 
   m_WaterDroppedMaskPrefab: {fileID: 1845502636620674221, guid: 88668dffbb6dd624ea43c955ffdc3b44, type: 3}
