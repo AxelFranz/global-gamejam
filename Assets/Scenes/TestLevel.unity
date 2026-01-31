@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 6481781733107862053, guid: bff3dbdd9e781b749a4fc539167e8997, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6045b9b2122d01249a11e9d5b8fd4ee2, type: 2}
     - target: {fileID: 9107502055983798925, guid: bff3dbdd9e781b749a4fc539167e8997, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.8172774
@@ -545,7 +549,7 @@ GameObject:
   - component: {fileID: 832575519}
   - component: {fileID: 832575518}
   m_Layer: 0
-  m_Name: Global Volume
+  m_Name: FireVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

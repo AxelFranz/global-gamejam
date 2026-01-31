@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 510421197616430351}
   - component: {fileID: 9108801349613625061}
   - component: {fileID: 5236533323116820918}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MaskBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 5746189187250615075}
   - component: {fileID: 3380943244016489986}
   - component: {fileID: 6490711473074865761}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 3874744794156170318}
   - component: {fileID: 4276547547570796814}
   - component: {fileID: 1337960732406569787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MaskEquipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,9 +407,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8391193718175552794, guid: 6aeecca04a8f02145892af0d94bed6e1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -7167738459889129385, guid: 6aeecca04a8f02145892af0d94bed6e1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -79315115026061072, guid: 6aeecca04a8f02145892af0d94bed6e1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6aeecca04a8f02145892af0d94bed6e1, type: 3}
       propertyPath: m_Name
       value: Chibi_model_notexture
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6aeecca04a8f02145892af0d94bed6e1, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
