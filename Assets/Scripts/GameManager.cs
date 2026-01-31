@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         switch(newState)
         {
             case GameState.Menu:
+                Events.MenuOpened(); 
                 Camera.Instance.AddComponent<SpinCamera>();
                 Camera.Instance.GetComponent<SmoothCameraFollow>().enabled = false;
                 break;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
                 Destroy(Camera.Instance.GetComponent<SpinCamera>());
                 Camera.Instance.GetComponent<SmoothCameraFollow>().enabled = true;
                 Events.PlayerLoaded();
+                Events.MenuClosed();
                 break;
         }
     }
