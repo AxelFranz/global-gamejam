@@ -3,6 +3,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Player;
     public static GameManager Instance { get; private set; }
 
     public MaskState MaskState { get; private set; }
@@ -29,21 +30,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangeMask(MaskState newState)
     {
-        // Change the state variable
-        MaskState = newState;
-        // Run some code depending on the new state
-        switch (newState) {
-            case MaskState.Fire:
-                break;
-            case MaskState.Water:
-                break;
-            case MaskState.Plant:
-                break;
-            case MaskState.Unmasked:
-                break;
-        }
-
-        // Send the event to every listening script
         Events.MaskChanged?.Invoke(newState);
     }
 
