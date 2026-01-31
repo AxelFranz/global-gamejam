@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        // Keep the GameManager when loading new scenes
+        // Keep the Player when loading new scenes
         DontDestroyOnLoad(gameObject);
 
         // Singleton checks
@@ -53,13 +53,15 @@ public class Player : MonoBehaviour
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
         m_switchMask.started += switchMask;
         renderMasks();
+
+        Events.PlayerLoaded?.Invoke();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         Vector2 moveValue = m_moveAction.ReadValue<Vector2>();
         moveValue *= m_speed;
         Vector3 velocity = new Vector3(moveValue.x, 0,moveValue.y);
-        m_rb.linearVelocity = velocity;
+        m_rb.AddForce(velocity);
     }
 
     private void switchMask(InputAction.CallbackContext context)

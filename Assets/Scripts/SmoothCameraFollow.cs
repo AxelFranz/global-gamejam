@@ -2,22 +2,29 @@ using UnityEngine;
 
 public class SmoothCameraFollow : MonoBehaviour
 {
-    private Vector3 _offset;
-    [SerializeField] private Transform target;
+    [SerializeField] private Vector3 m_offset;
+    [SerializeField] private Vector3 m_rotation;
     [SerializeField] private float smoothTime;
     private Vector3 _currentVelocity = Vector3.zero;
+
+    
 
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        _offset = transform.position - target.position;
+        Events.PlayerLoaded += onPlayerLoaded;
     }
 
     private void FixedUpdate()
     {
-        Vector3 targetPosition = target.position + _offset;
+        Vector3 targetPosition = Player.Instance.transform.position + m_offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smoothTime);
+    }
+
+    private void onPlayerLoaded() {
+        transform.position = Player.Instance.transform.position + m_offset;
+        transform.localEulerAngles = m_rotation;
     }
 
 }
