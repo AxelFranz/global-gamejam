@@ -1,16 +1,18 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Player;
     public static GameManager Instance { get; private set; }
 
     public MaskState MaskState { get; private set; }
+    public GameState GameState { get; private set; }
 
 
     private void Awake()
     {
+        this.GameState = GameState.Menu;
         // Keep the GameManager when loading new scenes
         DontDestroyOnLoad(gameObject);
 
@@ -24,10 +26,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+
 
     public void ChangeMask(MaskState newState)
     {
         Events.MaskChanged?.Invoke(newState);
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        switch(newState)
+        {
+            case GameState.Menu:
+                Camera.Instance.AddComponent<SpinCamera>();
+                Camera.Instance.GetComponent<SmoothCameraFollow>().enabled = false;
+                break;
+            case GameState.Playing:
+                Destroy(Camera.Instance.GetComponent<SpinCamera>());
+                Camera.Instance.GetComponent<SmoothCameraFollow>().enabled = true;
+                Events.PlayerLoaded();
+                break;
+        }
     }
 
     // Update is called once per frame

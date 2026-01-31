@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         m_switchMask.started += switchMask;
         renderMasks();
 
-        Events.PlayerLoaded?.Invoke();
+        //Events.PlayerLoaded?.Invoke();
     }
     private void FixedUpdate()
     {
