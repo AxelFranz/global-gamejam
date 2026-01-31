@@ -8,12 +8,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject m_model;
     [SerializeField] private float m_speed = 10;
-    [SerializeField] private GameObject m_maskEquipped;
-    [SerializeField] private GameObject m_maskBack;
     [SerializeField] private GameObject m_fireMaskPrefab;
     [SerializeField] private GameObject m_waterMaskPrefab;
     [SerializeField] private GameObject m_plantMaskPrefab;
+    [SerializeField] private MaskState m_startingEquippedMask;
+    [SerializeField] private MaskState m_startingBackMask;
 
+    private GameObject m_maskEquipped;
+    private GameObject m_maskBack;
 
     public static Player Instance { get; private set; }
     private Rigidbody m_rb;
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
             return;
         }
         Events.PlayerDetected += onPlayerDetected;
+        m_maskEquipped = GetComponentInChildren<MaskEquipped>().gameObject;
+        m_maskBack = GetComponentInChildren<MaskBack>().gameObject;
     }
 
     private void onPlayerDetected(MaskState maskState)
@@ -47,7 +51,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-        m_equippedMasks = new List<MaskState>(){ MaskState.Fire, MaskState.Unmasked };
+        m_equippedMasks = new List<MaskState>(){ m_startingEquippedMask, m_startingBackMask };
         Events.MaskChanged += onMaskChange;
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
@@ -72,6 +76,11 @@ public class Player : MonoBehaviour
 
     public void addMask(MaskState mask)
     {
+        if(m_equippedMasks[0] == MaskState.Unmasked && m_equippedMasks[1] == MaskState.Unmasked) {
+            m_equippedMasks[0] = mask;
+            renderMasks();
+            return;
+        }
         // 1 because we change the mask on the back
 
         GameObject instantiatedPrefab = null;
