@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject m_fireMaskPrefab;
     [SerializeField] private GameObject m_waterMaskPrefab;
     [SerializeField] private GameObject m_plantMaskPrefab;
-    [SerializeField] private MaskState m_startingEquippedMask;
-    [SerializeField] private MaskState m_startingBackMask;
 
     private GameObject m_maskEquipped;
     private GameObject m_maskBack;
@@ -53,7 +51,7 @@ public class Player : MonoBehaviour
         m_equippedMasks = new List<MaskState>(){ equippedMask, backMask };
         Events.MaskChanged += onMaskChange;
         renderMasks();
-        Debug.Log("Setting masks: " + m_startingEquippedMask + ", " + m_startingBackMask);
+        Debug.Log("Setting masks: " + equippedMask + ", " + backMask);
     }
 
     private void Start()
