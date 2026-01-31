@@ -35,6 +35,16 @@ public class Player : MonoBehaviour
             return;
         }
         Events.PlayerDetected += onPlayerDetected;
+        Events.MaskChanged += onMaskChange;
+        Events.MenuClosed += onMenuClosed;
+        Events.MenuOpened += onMenuOpened;
+
+        m_rb = GetComponent<Rigidbody>();
+        m_equippedMasks = new List<MaskState>(){ m_startingEquippedMask, m_startingBackMask };
+        m_moveAction = InputSystem.actions.FindAction("Move");
+        m_switchMask = InputSystem.actions.FindAction("SwitchMask");
+        m_switchMask.started += switchMask;
+
         m_maskEquipped = GetComponentInChildren<MaskEquipped>().gameObject;
         m_maskBack = GetComponentInChildren<MaskBack>().gameObject;
     }
@@ -42,7 +52,7 @@ public class Player : MonoBehaviour
     private void onPlayerDetected(MaskState maskState)
     {
         if (GameManager.Instance.MaskState != maskState) {
-            Debug.Log("Merde, chopé");
+            Debug.Log("Merde, chopÃ©");
         }
     }
 
@@ -56,12 +66,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        renderMasks();
         m_rb = GetComponent<Rigidbody>();
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
         m_switchMask.started += switchMask;
 
-        Events.PlayerLoaded?.Invoke();
+        //Events.PlayerLoaded?.Invoke();
     }
     private void FixedUpdate()
     {
@@ -128,6 +139,19 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void onMenuOpened()
+    {
+        m_moveAction.Disable();
+        m_switchMask.Disable();
+    }
+
+    private void onMenuClosed()
+    {
+        m_moveAction.Enable();
+        m_switchMask.Enable();
+
+    }
 
     private void onMaskChange(MaskState state)
     {
