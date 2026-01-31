@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -17,6 +18,27 @@ public class Player : MonoBehaviour
     private InputAction m_moveAction;
     private InputAction m_switchMask;
     private List<MaskState> m_equippedMasks; // [0] = Equipped mask, [1] = mask on back
+
+    private void Awake()
+    {
+        // Keep the GameManager when loading new scenes
+        DontDestroyOnLoad(gameObject);
+
+        // Singleton checks
+        if (Instance == null) { // If there is no instance of GameManager yet, then this one becomes the only instance
+            Instance = this;
+        } else {                // If a GameManager instance already exists, destroy the new one
+            Debug.LogWarning("Player Instance already exists, destroying the duplicate");
+            Destroy(gameObject);
+            return;
+        }
+        Events.PlayerDetected += onPlayerDetected;
+    }
+
+    private void onPlayerDetected()
+    {
+        Debug.Log("Aïe");
+    }
 
     private void Start()
     {
