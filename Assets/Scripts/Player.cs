@@ -6,9 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GameObject m_model;
+    [SerializeField] private float m_speed = 10;
+    [SerializeField] private GameObject m_maskEquipped;
+    [SerializeField] private GameObject m_maskBack;
+
+
     public static Player Instance { get; private set; }
     private Rigidbody m_rb;
-    [SerializeField] private float m_speed = 10;
     private InputAction m_moveAction;
     private InputAction m_switchMask;
     private List<MaskState> m_equippedMasks; // [0] = Equipped mask, [1] = mask on back
@@ -16,12 +21,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-        GetComponent<MeshRenderer>().material.color = Color.red;
-        m_equippedMasks = new List<MaskState>() { MaskState.Fire, MaskState.Water };
+        m_equippedMasks = new List<MaskState>(){ MaskState.Fire, MaskState.Water };
         GameManager.Instance.MaskChanged += onMaskChange;
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
         m_switchMask.started += switchMask;
+        renderMasks();
     }
     private void Update()
     {
@@ -37,30 +42,25 @@ public class Player : MonoBehaviour
         GameManager.Instance.ChangeMask(m_equippedMasks[0]);
     }
 
+    public void addMask(MaskState mask)
+    {
+        // 1 because we change the mask on the back
+        m_equippedMasks[1] = mask;
+        renderMasks();
+    }
+
+    private void renderMasks()
+    {
+        m_maskEquipped.GetComponent<MeshRenderer>().material.color = Utils.MaskStateToColor(m_equippedMasks[0]);
+        m_maskBack.GetComponent<MeshRenderer>().material.color = Utils.MaskStateToColor(m_equippedMasks[1]);
+    }
+
+
     private void onMaskChange(MaskState state)
     {
         m_equippedMasks[0] = state;
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        Color newColor;
-        switch(state)
-        {
-            case MaskState.Fire:
-                newColor = Color.red; 
-                break;
-            case MaskState.Water:
-                newColor = Color.blue;
-                break;
-            case MaskState.Plant:
-                newColor = Color.green;
-                break;
-            case MaskState.Unmasked:
-                newColor = Color.grey;
-                break;
-            default:
-                newColor = Color.grey;
-                break;
-        }
-        meshRenderer.material.color = newColor;
+        renderMasks();
+
         Debug.Log(state);
     }
 
