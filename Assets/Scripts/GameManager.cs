@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-
-        //m_PickUps = new List<PickUp>();
     }
 
 

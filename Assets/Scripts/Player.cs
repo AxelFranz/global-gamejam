@@ -37,9 +37,11 @@ public class Player : MonoBehaviour
         Events.PlayerDetected += onPlayerDetected;
     }
 
-    private void onPlayerDetected()
+    private void onPlayerDetected(MaskState maskState)
     {
-
+        if (GameManager.Instance.MaskState != maskState) {
+            Debug.Log("Merde, chopé");
+        }
     }
 
     private void Start()

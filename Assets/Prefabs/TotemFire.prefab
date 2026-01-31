@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1183386009647414607}
   - component: {fileID: 1080077435042862209}
   m_Layer: 0
-  m_Name: Totem
+  m_Name: TotemFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 530785586680260914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.34744, y: 0, z: 6.09334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,14 +50,15 @@ MonoBehaviour:
   m_viewAngle: 75
   m_targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_meshResolution: 0.25
   m_edgeDstThreshold: 0.5
   m_edgeResolveIterations: 4
-  m_viewMeshFilter: {fileID: 0}
+  m_viewMeshFilter: {fileID: 3617892074001214678}
+  m_maskState: 0
 --- !u!1 &4195010687040412045
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 7978299567090333629}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.26, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -215,7 +216,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8373d387042381b409473e11f30b7229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
