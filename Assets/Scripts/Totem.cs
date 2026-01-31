@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class FieldOfView : MonoBehaviour {
+public class Totem : MonoBehaviour {
 
 	public float m_viewRadius = 10;
 	[Range(0, 360)]
@@ -13,6 +13,7 @@ public class FieldOfView : MonoBehaviour {
     [SerializeField] private float m_edgeDstThreshold = .5f;
 	[SerializeField] private int m_edgeResolveIterations = 4;
 	[SerializeField] private MeshFilter m_viewMeshFilter;
+	[SerializeField] private MaskState m_maskState;
 	private Mesh m_viewMesh;
 
     public bool m_targetVisible { get; private set; }
@@ -49,7 +50,7 @@ public class FieldOfView : MonoBehaviour {
 
 			if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, m_obstacleMask)) {
 				m_targetVisible = true;
-				Events.PlayerDetected();
+				Events.PlayerDetected?.Invoke(m_maskState);
 				return;
 			}
 		}

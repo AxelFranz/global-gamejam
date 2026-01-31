@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor (typeof (FieldOfView))]
+[CustomEditor (typeof (Totem))]
 public class FieldOfViewEditor : Editor {
 
 	void OnSceneGUI() {
-		FieldOfView fow = (FieldOfView)target;
+		Totem fow = (Totem)target;
 		Handles.color = Color.white;
 		Handles.DrawWireArc (fow.transform.position, Vector3.up, Vector3.forward, 360, fow.m_viewRadius);
 		Vector3 viewAngleA = fow.DirFromAngle (-fow.m_viewAngle / 2, false);

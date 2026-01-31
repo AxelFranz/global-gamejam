@@ -3,5 +3,5 @@ using System;
 public static class Events
 {
     public static Action<MaskState> MaskChanged;
-    public static Action PlayerDetected;
+    public static Action<MaskState> PlayerDetected;
 }
