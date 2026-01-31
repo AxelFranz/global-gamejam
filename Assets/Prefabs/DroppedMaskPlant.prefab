@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DroppedMaskPlant
       objectReference: {fileID: 0}
+    - target: {fileID: 6416929956309129695, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 32d26f1fda74698448adeb702db144ef, type: 2}
     - target: {fileID: 8698005312897323783, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
       propertyPath: state
       value: 2

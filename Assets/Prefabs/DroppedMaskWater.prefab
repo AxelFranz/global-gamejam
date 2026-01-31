@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DroppedMaskWater
       objectReference: {fileID: 0}
+    - target: {fileID: 6416929956309129695, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a08c8e1ff05d5e4fb5f10be95cc5444, type: 2}
     - target: {fileID: 8698005312897323783, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
       propertyPath: state
       value: 1

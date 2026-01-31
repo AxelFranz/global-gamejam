@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DroppedMask
   state: 0
+  activeMode: 1
 --- !u!64 &4926566943808277523
 MeshCollider:
   m_ObjectHideFlags: 0
