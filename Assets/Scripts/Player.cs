@@ -54,13 +54,25 @@ public class Player : MonoBehaviour
     private void onPlayerDetected(MaskState maskState)
     {
         if (GameManager.Instance.MaskState != maskState) {
-            Debug.Log("Merde, chopé");
+            Debug.Log("Merde, chopÃ©");
         }
+    }
+
+    public void setStartingMasks(MaskState backMask, MaskState equippedMask)
+    {
+        m_equippedMasks = new List<MaskState>(){ equippedMask, backMask };
+        Events.MaskChanged += onMaskChange;
+        renderMasks();
+        Debug.Log("Setting masks: " + m_startingEquippedMask + ", " + m_startingBackMask);
     }
 
     private void Start()
     {
         renderMasks();
+        m_rb = GetComponent<Rigidbody>();
+        m_moveAction = InputSystem.actions.FindAction("Move");
+        m_switchMask = InputSystem.actions.FindAction("SwitchMask");
+        m_switchMask.started += switchMask;
 
         //Events.PlayerLoaded?.Invoke();
     }
@@ -149,6 +161,11 @@ public class Player : MonoBehaviour
         renderMasks();
 
         Debug.Log(state);
+    }
+    
+    private void die()
+    {
+        Events.Die();
     }
 
 }
