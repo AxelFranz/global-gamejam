@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_speed = 10;
     [SerializeField] private GameObject m_maskEquipped;
     [SerializeField] private GameObject m_maskBack;
+    [SerializeField] private GameObject m_fireMaskPrefab;
+    [SerializeField] private GameObject m_waterMaskPrefab;
+    [SerializeField] private GameObject m_plantMaskPrefab;
 
 
     public static Player Instance { get; private set; }
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-        m_equippedMasks = new List<MaskState>(){ MaskState.Fire, MaskState.Water };
+        m_equippedMasks = new List<MaskState>(){ MaskState.Fire, MaskState.Unmasked };
         Events.MaskChanged += onMaskChange;
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
@@ -66,14 +69,47 @@ public class Player : MonoBehaviour
     public void addMask(MaskState mask)
     {
         // 1 because we change the mask on the back
+
+        GameObject instantiatedPrefab = null;
+        switch(m_equippedMasks[1])
+        {
+            case MaskState.Fire:
+                instantiatedPrefab = Instantiate(m_fireMaskPrefab);
+                break;
+            case MaskState.Water:
+                instantiatedPrefab = Instantiate(m_waterMaskPrefab);
+                break;
+            case MaskState.Plant:
+                instantiatedPrefab = Instantiate(m_plantMaskPrefab);
+                break;
+        }
+        if(instantiatedPrefab != null)
+        {
+            instantiatedPrefab.transform.position = gameObject.transform.position;
+            instantiatedPrefab.GetComponent<DroppedMask>().activeMode = false;
+        }
+
         m_equippedMasks[1] = mask;
         renderMasks();
     }
 
     private void renderMasks()
     {
-        m_maskEquipped.GetComponent<MeshRenderer>().material.color = Utils.MaskStateToColor(m_equippedMasks[0]);
-        m_maskBack.GetComponent<MeshRenderer>().material.color = Utils.MaskStateToColor(m_equippedMasks[1]);
+        if (m_equippedMasks[0] == MaskState.Unmasked) m_maskEquipped.GetComponent<MeshRenderer>().enabled = false;
+        else
+        {
+            MeshRenderer renderer = m_maskEquipped.GetComponent<MeshRenderer>();
+            renderer.enabled = true;
+            renderer.material.color = Utils.MaskStateToColor(m_equippedMasks[0]);
+        }
+
+        if (m_equippedMasks[1] == MaskState.Unmasked) m_maskBack.GetComponent<MeshRenderer>().enabled = false;
+        else
+        {
+            MeshRenderer renderer = m_maskBack.GetComponent<MeshRenderer>();
+            renderer.enabled = true;
+            renderer.material.color = Utils.MaskStateToColor(m_equippedMasks[1]);
+        }
     }
 
 

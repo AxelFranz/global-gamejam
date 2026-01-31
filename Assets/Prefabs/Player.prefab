@@ -235,6 +235,9 @@ MonoBehaviour:
   m_speed: 10
   m_maskEquipped: {fileID: 9122320519687642105}
   m_maskBack: {fileID: 3238617081337136852}
+  m_fireMaskPrefab: {fileID: 4034575035677186383, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
+  m_waterMaskPrefab: {fileID: 1845502636620674221, guid: 88668dffbb6dd624ea43c955ffdc3b44, type: 3}
+  m_plantMaskPrefab: {fileID: 7441675299632442829, guid: a8fd9c531b38b564989ccc7865762847, type: 3}
 --- !u!114 &5746189187250615075
 MonoBehaviour:
   m_ObjectHideFlags: 0

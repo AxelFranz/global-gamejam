@@ -13,7 +13,7 @@ public static class Utils
             case MaskState.Plant:
                 return Color.green;
             case MaskState.Unmasked:
-                return Color.grey;
+                return Color.clear;
             default:
                 return Color.grey;
         }
