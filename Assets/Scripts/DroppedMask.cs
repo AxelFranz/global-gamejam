@@ -4,10 +4,11 @@ public class DroppedMask : MonoBehaviour
 {
     public MaskState state;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Player.Instance.addMask(state);
         Destroy(gameObject);
+ 
     }
 
 

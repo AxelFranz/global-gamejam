@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,7 +43,7 @@ public class Player : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         m_equippedMasks = new List<MaskState>(){ MaskState.Fire, MaskState.Water };
-        GameManager.Instance.MaskChanged += onMaskChange;
+        Events.MaskChanged += onMaskChange;
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_switchMask = InputSystem.actions.FindAction("SwitchMask");
         m_switchMask.started += switchMask;
