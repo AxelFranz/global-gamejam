@@ -14,9 +14,9 @@ public class Obstacle : MonoBehaviour
     }
 
     void onMaskChanged(MaskState newState) {
-        if ((m_maskState == MaskState.Fire && newState == MaskState.Water) ||
-            (m_maskState == MaskState.Water && newState == MaskState.Plant) ||
-            (m_maskState == MaskState.Plant && newState == MaskState.Fire)) {
+        if ((m_maskState == MaskState.Water && newState == MaskState.Water) ||
+            (m_maskState == MaskState.Plant && newState == MaskState.Plant) ||
+            (m_maskState == MaskState.Fire && newState == MaskState.Fire)) {
             disappear();
         } else {
             pop();

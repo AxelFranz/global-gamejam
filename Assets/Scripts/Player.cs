@@ -52,7 +52,9 @@ public class Player : MonoBehaviour
 
     private void onPlayerDetected(MaskState maskState)
     {
+        Debug.Log("non");
         if (GameManager.Instance.MaskState != maskState) {
+            die();
             Debug.Log("Merde, chopé");
         }
     }

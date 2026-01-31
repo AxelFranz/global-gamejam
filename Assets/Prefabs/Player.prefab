@@ -133,8 +133,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8103137497020972542}
   - {fileID: 4897834865058112956}
@@ -154,12 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   m_model: {fileID: 0}
-  m_speed: 35
+  m_speed: 100
   m_fireMaskPrefab: {fileID: 4034575035677186383, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
   m_waterMaskPrefab: {fileID: 1845502636620674221, guid: 88668dffbb6dd624ea43c955ffdc3b44, type: 3}
   m_plantMaskPrefab: {fileID: 7441675299632442829, guid: a8fd9c531b38b564989ccc7865762847, type: 3}
-  m_startingEquippedMask: 3
-  m_startingBackMask: 3
 --- !u!114 &5746189187250615075
 MonoBehaviour:
   m_ObjectHideFlags: 0

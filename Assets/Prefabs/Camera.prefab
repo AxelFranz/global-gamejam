@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274407e586bdec0428d76dddc51fdded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SmoothCameraFollow
-  m_offset: {x: 0, y: 16, z: -4.1}
+  m_offset: {x: 0, y: 30, z: -4.1}
   m_rotation: {x: 70, y: 0, z: 0}
   smoothTime: 0.1
 --- !u!114 &5834565790438502183

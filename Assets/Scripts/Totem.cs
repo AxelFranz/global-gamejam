@@ -51,7 +51,6 @@ public class Totem : MonoBehaviour {
 			if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, m_obstacleMask)) {
 				m_targetVisible = true;
 				Events.PlayerDetected?.Invoke(m_maskState);
-				Events.Die();
 				return;
 			}
 		}
