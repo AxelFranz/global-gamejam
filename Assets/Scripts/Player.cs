@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void onPlayerDetected()
     {
-        Debug.Log("Aïe");
+
     }
 
     private void Start()
