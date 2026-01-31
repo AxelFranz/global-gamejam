@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   m_model: {fileID: 398104749883382875}
-  m_speed: 10
+  m_speed: 35
   m_maskEquipped: {fileID: 9122320519687642105}
   m_maskBack: {fileID: 3238617081337136852}
   m_fireMaskPrefab: {fileID: 4034575035677186383, guid: 153afd2e9aa143a4e9f878ed03a03f8f, type: 3}
@@ -276,7 +276,7 @@ Rigidbody:
   m_GameObject: {fileID: 3976466574800116831}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 7.5
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
