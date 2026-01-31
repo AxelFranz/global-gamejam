@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class FieldOfView : MonoBehaviour {
 
-	public float m_viewRadius;
+	public float m_viewRadius = 10;
 	[Range(0, 360)]
-	public float m_viewAngle;
+	public float m_viewAngle = 75f;
 	[SerializeField] private LayerMask m_targetMask;
 	[SerializeField] private LayerMask m_obstacleMask;
-    [SerializeField] private int m_meshResolution = 1;
+    [SerializeField] private float m_meshResolution = .25f;
     [SerializeField] private float m_edgeDstThreshold = .5f;
 	[SerializeField] private int m_edgeResolveIterations = 4;
 	[SerializeField] private MeshFilter m_viewMeshFilter;

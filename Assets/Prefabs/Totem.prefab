@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183386009647414607}
-  - component: {fileID: 4310275891845620647}
   - component: {fileID: 1080077435042862209}
   m_Layer: 0
   m_Name: Totem
@@ -35,18 +34,6 @@ Transform:
   - {fileID: 2276189516515139746}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4310275891845620647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530785586680260914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eabb9c239f39c9c498dec094f54b0fe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &1080077435042862209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,18 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ae6270075f87b4f95110b04d78151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FieldOfView
-  m_viewRadius: 12.94
-  m_viewAngle: 79
+  m_viewRadius: 10
+  m_viewAngle: 75
   m_targetMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
-  m_meshResolution: 1
-  m_edgeDstThreshold: 0
-  m_edgeResolveIterations: 0
-  m_viewMeshFilter: {fileID: 3617892074001214678}
+    m_Bits: 0
+  m_meshResolution: 0.25
+  m_edgeDstThreshold: 0.5
+  m_edgeResolveIterations: 4
+  m_viewMeshFilter: {fileID: 0}
 --- !u!1 &4195010687040412045
 GameObject:
   m_ObjectHideFlags: 0
