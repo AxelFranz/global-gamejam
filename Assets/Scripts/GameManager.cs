@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         this.GameState = GameState.Menu;
+        this.MaskState = MaskState.Unmasked;
         // Keep the GameManager when loading new scenes
         DontDestroyOnLoad(gameObject);
 
@@ -31,14 +32,25 @@ public class GameManager : MonoBehaviour
 
     public void ChangeMask(MaskState newState)
     {
+        if(MaskState != newState)
+        {
+            AudioManager.Instance.StopAll();
+
+            AudioManager.Instance.changeMask((newState == MaskState.Unmasked) ? "menu" : newState.ToString() );
+
+        }
         Events.MaskChanged?.Invoke(newState);
+        MaskState = newState;
     }
 
     public void ChangeState(GameState newState)
     {
+        GameState = newState;
         switch(newState)
         {
             case GameState.Menu:
+                AudioManager.Instance.StopAll();
+                AudioManager.Instance.Play("menu");
                 Events.MenuOpened(); 
                 Camera.Instance.AddComponent<SpinCamera>();
                 Camera.Instance.GetComponent<SmoothCameraFollow>().enabled = false;

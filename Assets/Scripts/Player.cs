@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
         if(m_equippedMasks[0] == MaskState.Unmasked && m_equippedMasks[1] == MaskState.Unmasked) {
             m_equippedMasks[0] = mask;
             renderMasks();
+            GameManager.Instance.ChangeMask(mask);
             return;
         }
         // 1 because we change the mask on the back
@@ -159,8 +160,6 @@ public class Player : MonoBehaviour
     {
         m_equippedMasks[0] = state;
         renderMasks();
-
-        Debug.Log(state);
     }
     
     private void die()
