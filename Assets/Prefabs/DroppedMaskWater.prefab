@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8e44304cd42e8624e9240a0887fbdaf2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e5d9343b6ca10e243ab56c1ba0a8ac66, type: 2}
     - target: {fileID: 919132149155446097, guid: 8e44304cd42e8624e9240a0887fbdaf2, type: 3}
       propertyPath: m_Name
       value: piedestal_eau

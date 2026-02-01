@@ -8,9 +8,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject m_model;
     [SerializeField] private float m_speed = 10;
+    [SerializeField] private GameObject m_fireDroppedMaskPrefab;
+    [SerializeField] private GameObject m_waterDroppedMaskPrefab;
+    [SerializeField] private GameObject m_plantDroppedMaskPrefab;
+
     [SerializeField] private GameObject m_fireMaskPrefab;
     [SerializeField] private GameObject m_waterMaskPrefab;
     [SerializeField] private GameObject m_plantMaskPrefab;
+
 
     private GameObject m_maskEquipped;
     private GameObject m_maskBack;
@@ -20,8 +25,6 @@ public class Player : MonoBehaviour
     private InputAction m_moveAction;
     private InputAction m_switchMask;
     private List<MaskState> m_equippedMasks; // [0] = Equipped mask, [1] = mask on back
-
-    private Vector3 lastInput;
 
     private void Awake()
     {
@@ -50,7 +53,6 @@ public class Player : MonoBehaviour
         m_maskBack = GetComponentInChildren<MaskBack>().gameObject;
 
         setStartingMasks(MaskState.Unmasked, MaskState.Unmasked);
-        lastInput = new Vector3(0,0,0);
     }
 
     private void onPlayerDetected(MaskState maskState)
@@ -110,17 +112,20 @@ public class Player : MonoBehaviour
         }
         // 1 because we change the mask on the back
 
+        Debug.Log(m_fireDroppedMaskPrefab);
+        Debug.Log(m_waterDroppedMaskPrefab);
+        Debug.Log(m_plantDroppedMaskPrefab);
         GameObject instantiatedPrefab = null;
         switch(m_equippedMasks[1])
         {
             case MaskState.Fire:
-                instantiatedPrefab = Instantiate(m_fireMaskPrefab);
+                instantiatedPrefab = Instantiate(m_fireDroppedMaskPrefab);
                 break;
             case MaskState.Water:
-                instantiatedPrefab = Instantiate(m_waterMaskPrefab);
+                instantiatedPrefab = Instantiate(m_waterDroppedMaskPrefab);
                 break;
             case MaskState.Plant:
-                instantiatedPrefab = Instantiate(m_plantMaskPrefab);
+                instantiatedPrefab = Instantiate(m_plantDroppedMaskPrefab);
                 break;
         }
         if(instantiatedPrefab != null)
@@ -133,6 +138,24 @@ public class Player : MonoBehaviour
         renderMasks();
     }
 
+    private GameObject getObject(MaskState state)
+    {
+        switch(state)
+        {
+            case MaskState.Fire:
+                return m_fireMaskPrefab.GetComponentInChildren<MeshRenderer>().gameObject;
+            case MaskState.Water:
+                return m_waterMaskPrefab.GetComponentInChildren<MeshRenderer>().gameObject;
+            case MaskState.Plant:
+                return m_plantMaskPrefab.GetComponentInChildren<MeshRenderer>().gameObject;
+            case MaskState.Unmasked:
+                return null;
+            default:
+                return null;
+        }
+
+    }
+
     private void renderMasks()
     {
         if (m_equippedMasks[0] == MaskState.Unmasked) m_maskEquipped.GetComponent<MeshRenderer>().enabled = false;
@@ -140,7 +163,10 @@ public class Player : MonoBehaviour
         {
             MeshRenderer renderer = m_maskEquipped.GetComponent<MeshRenderer>();
             renderer.enabled = true;
-            renderer.material.color = Utils.MaskStateToColor(m_equippedMasks[0]);
+            GameObject mask = getObject(m_equippedMasks[0]);
+            renderer.material = mask.GetComponent<MeshRenderer>().sharedMaterial;
+            MeshFilter mesh = m_maskEquipped.GetComponent<MeshFilter>();
+            mesh.mesh = mask.GetComponent<MeshFilter>().sharedMesh;
         }
 
         if (m_equippedMasks[1] == MaskState.Unmasked) m_maskBack.GetComponent<MeshRenderer>().enabled = false;
@@ -148,7 +174,10 @@ public class Player : MonoBehaviour
         {
             MeshRenderer renderer = m_maskBack.GetComponent<MeshRenderer>();
             renderer.enabled = true;
-            renderer.material.color = Utils.MaskStateToColor(m_equippedMasks[1]);
+            GameObject mask = getObject(m_equippedMasks[1]);
+            renderer.material = mask.GetComponent<MeshRenderer>().sharedMaterial;
+            MeshFilter mesh = m_maskBack.GetComponent<MeshFilter>();
+            mesh.mesh = mask.GetComponent<MeshFilter>().sharedMesh;
         }
     }
 
