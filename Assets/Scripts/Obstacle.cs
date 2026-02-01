@@ -1,37 +1,60 @@
+using UnityEditor.UI;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private MaskState m_maskState;
-    private MeshRenderer m_meshRenderer;
+    private Renderer[] m_renderers;
     private BoxCollider m_boxCollider;
+    private Animator m_animator;
+    private bool m_here = true;
     
     void Awake()
     {
         Events.MaskChanged += onMaskChanged;
+        Events.ObstacleOffFinished += onObstacleOffFinished;
+        Events.ObstacleOnFinished += onObstacleOnFinished;
         m_boxCollider = GetComponent<BoxCollider>();
-        m_meshRenderer = GetComponent<MeshRenderer>();
+        //m_meshRenderer = GetComponent<MeshRenderer>();
+        m_renderers = GetComponentsInChildren<Renderer>();
+        m_animator = GetComponent<Animator>();
     }
 
     void onMaskChanged(MaskState newState) {
-        if ((m_maskState == MaskState.Water && newState == MaskState.Water) ||
-            (m_maskState == MaskState.Plant && newState == MaskState.Plant) ||
-            (m_maskState == MaskState.Fire && newState == MaskState.Fire)) {
+        if (m_maskState == newState) {
             disappear();
         } else {
-            pop();
+            if (!m_here) pop();
         }
     }
 
     void pop()
     {
-        m_meshRenderer.enabled = true;
+        m_animator.SetTrigger("ObstacleOn");
+        foreach (Renderer renderer in m_renderers) {
+            renderer.enabled = true;
+        }
         m_boxCollider.enabled = true;
+        m_here = true;
     }
 
     void disappear()
     {
-        m_meshRenderer.enabled = false;
         m_boxCollider.enabled = false;
+        m_animator.SetTrigger("ObstacleOff");
+        m_here = false;
+    }
+
+    void onObstacleOffFinished(MaskState state)
+    {
+        if (state != m_maskState) return;
+        foreach (Renderer renderer in m_renderers) {
+            renderer.enabled = false;
+        }
+    }
+
+    void onObstacleOnFinished(MaskState state)
+    {
+
     }
 }

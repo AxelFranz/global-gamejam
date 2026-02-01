@@ -10,4 +10,6 @@ public static class Events
     public static Action MenuClosed;
     public static Action Win;
     public static Action Die;
+    public static Action<MaskState> ObstacleOnFinished;
+    public static Action<MaskState> ObstacleOffFinished;
 }
