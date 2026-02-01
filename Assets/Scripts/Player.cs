@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject m_fireMaskPrefab;
     [SerializeField] private GameObject m_waterMaskPrefab;
     [SerializeField] private GameObject m_plantMaskPrefab;
+
+    [SerializeField] private Animator m_anim;
 
 
     private GameObject m_maskEquipped;
@@ -88,11 +91,15 @@ public class Player : MonoBehaviour
         Vector3 velocity = new Vector3(moveValue.x, 0,moveValue.y);
         if(velocity != Vector3.zero)
         {
+            m_anim.SetBool("isMoving", true);
             Quaternion newRot = Quaternion.LookRotation(velocity);
             m_model.transform.rotation = Quaternion.Slerp(m_model.transform.rotation, newRot, 10*Time.fixedDeltaTime);
 
+        } else
+        {
+            m_anim.SetBool("isMoving", false);
         }
-        velocity *= m_speed;
+            velocity *= m_speed;
         m_rb.AddForce(velocity);
     }
 

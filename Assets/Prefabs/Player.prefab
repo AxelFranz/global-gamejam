@@ -160,6 +160,7 @@ MonoBehaviour:
   m_fireMaskPrefab: {fileID: 160089134403713831, guid: 61fd3b63567373e43848f9b6d7fc39fd, type: 3}
   m_waterMaskPrefab: {fileID: 5165553759958074132, guid: 5d9bb7feab19cef4dafcb06e71526078, type: 3}
   m_plantMaskPrefab: {fileID: 3810729208913389516, guid: 18450f9c5ae20034ba9bd3e8290ce37e, type: 3}
+  m_anim: {fileID: -4913130450938701151}
 --- !u!114 &5746189187250615075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +250,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3976466574800116831}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 973fb1e2bf150f14b8789489eabac0a5, type: 2}
   m_Controller: {fileID: 9100000, guid: ffa8d64967a8e784f9da94ccc58eaf3c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
