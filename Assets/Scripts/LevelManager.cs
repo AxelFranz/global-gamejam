@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,13 @@ public class LevelManager : MonoBehaviour
 
     void onWin()
     {
+        StartCoroutine(winCoroutine());
+    }
+
+    IEnumerator winCoroutine()
+    {
+        float fanfareLength = AudioManager.Instance.win();
+        yield return new WaitForSeconds(fanfareLength);
         SceneManager.LoadScene(m_nextSceneName);
     }
 
