@@ -85,4 +85,14 @@ public class AudioManager : MonoBehaviour
 
     }
 
+	public float win()
+	{
+		
+		int fanfareNumber = UnityEngine.Random.Range(1, 3);
+		Sound fanfare = Find("win" + fanfareNumber.ToString());
+		fanfare.source.Play();
+		return fanfare.source.clip.length;
+
+	}
+
 }
