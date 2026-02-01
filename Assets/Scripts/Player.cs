@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private InputAction m_switchMask;
     private List<MaskState> m_equippedMasks; // [0] = Equipped mask, [1] = mask on back
 
+    private Vector3 lastInput;
+
     private void Awake()
     {
         // Keep the Player when loading new scenes
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour
         m_maskBack = GetComponentInChildren<MaskBack>().gameObject;
 
         setStartingMasks(MaskState.Unmasked, MaskState.Unmasked);
+        lastInput = new Vector3(0,0,0);
     }
 
     private void onPlayerDetected(MaskState maskState)
@@ -80,8 +83,14 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 moveValue = m_moveAction.ReadValue<Vector2>();
-        moveValue *= m_speed;
         Vector3 velocity = new Vector3(moveValue.x, 0,moveValue.y);
+        if(velocity != Vector3.zero)
+        {
+            Quaternion newRot = Quaternion.LookRotation(velocity);
+            m_model.transform.rotation = Quaternion.Slerp(m_model.transform.rotation, newRot, 10*Time.fixedDeltaTime);
+
+        }
+        velocity *= m_speed;
         m_rb.AddForce(velocity);
     }
 
