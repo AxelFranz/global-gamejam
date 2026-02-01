@@ -76,7 +76,6 @@ public class AudioManager : MonoBehaviour
 		int scratchNumber = UnityEngine.Random.Range(0, 5);
 		Sound scratch = Find("scratch" + scratchNumber.ToString());
 		Sound loop = Find(sound);
-		Debug.Log(loop);
 		Sound putMask = Find("putMask");
 		double nowtime = AudioSettings.dspTime;
 		putMask.source.Play();
