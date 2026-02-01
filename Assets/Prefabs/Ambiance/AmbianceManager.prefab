@@ -49,6 +49,9 @@ MonoBehaviour:
   m_waterVolumeProfile: {fileID: 11400000, guid: 61d6bfab983cda14bbe6cd4812653037, type: 2}
   m_fireVolumeProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
   m_plantVolumeProfile: {fileID: 11400000, guid: 7efa29f888ff1044f8f8078ebbe45711, type: 2}
+  m_waterParticleSystem: {fileID: 7177748913087300091, guid: ff0ceb0c685363645b816fd3df63b4fe, type: 3}
+  m_fireParticleSystem: {fileID: 8396358590329471657, guid: e94cafdf70ee6474d9f1db226ac2cb4d, type: 3}
+  m_plantParticleSystem: {fileID: 7177748913087300091, guid: ff0ceb0c685363645b816fd3df63b4fe, type: 3}
 --- !u!1001 &5324553991237667554
 PrefabInstance:
   m_ObjectHideFlags: 0
