@@ -16,8 +16,6 @@ public class AmbianceManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
         // Singleton checks
         if (Instance == null) { // If there is no instance of GameManager yet, then this one becomes the only instance
             Instance = this;
