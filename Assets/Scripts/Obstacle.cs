@@ -29,7 +29,9 @@ public class Obstacle : MonoBehaviour
 
     void pop()
     {
-        m_animator.SetTrigger("ObstacleOn");
+        if (m_animator != null) {
+            m_animator.SetTrigger("ObstacleOn");
+        }
         foreach (Renderer renderer in m_renderers) {
             renderer.enabled = true;
         }
