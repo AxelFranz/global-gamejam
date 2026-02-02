@@ -1660,7 +1660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 180501872017909957, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 43.1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 180501872017909957, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Scale.z
@@ -1672,7 +1672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 180501872017909957, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Position.y
-      value: -3.5
+      value: 12.2
       objectReference: {fileID: 0}
     - target: {fileID: 180501872017909957, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Position.z
@@ -1696,7 +1696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Scale.z
-      value: 1.97
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Position.x
@@ -1704,11 +1704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Position.y
-      value: -3.7
+      value: -3.73
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Position.z
-      value: 0.82
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Rotation.y
@@ -1716,7 +1716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: EmissionModule.rateOverTime.minScalar
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3717566565352111997, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
@@ -1727,8 +1727,24 @@ PrefabInstance:
       value: AmbianceManager
       objectReference: {fileID: 0}
     - target: {fileID: 8070421814618148226, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070421814618148226, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070421814618148226, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: ShapeModule.m_Position.y
       value: 19.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070421814618148226, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
+      propertyPath: ShapeModule.m_Position.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070421814618148226, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8621532364120203788, guid: 5eb0620ca34bd194397476e6d2f4734e, type: 3}
       propertyPath: m_LocalPosition.x
