@@ -74,4 +74,8 @@ public class AmbianceManager : MonoBehaviour
     {
         
     }
+
+	private void OnDestroy() {
+        Events.MaskChanged -= onMaskChanged;
+	}
 }

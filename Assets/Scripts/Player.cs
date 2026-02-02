@@ -213,4 +213,11 @@ public class Player : MonoBehaviour
         Events.Die();
     }
 
+    private void OnDestroy() {
+        Events.PlayerDetected -= onPlayerDetected;
+        Events.MaskChanged -= onMaskChange;
+        Events.MenuClosed -= onMenuClosed;
+        Events.MenuOpened -= onMenuOpened;
+    }
+
 }

@@ -99,6 +99,10 @@ public class LevelManager : MonoBehaviour
 			DroppedMask newDroppedMask = Instantiate(variant, mask.position, mask.rotation).GetComponent<DroppedMask>();
         }
     }
+	public void OnDestroy() {
+		Events.Win -= onWin;
+		Events.Die -= onDie;
+	}
 }
 public class PickUp 
 {
@@ -112,3 +116,4 @@ public class PickUp
         this.maskState = maskState;
 	}
 }
+
