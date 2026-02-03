@@ -14,12 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NV3.unity
     guid: 638ff6aa0ee877f44af63a84cd3c7675
-  - enabled: 1
-    path: Assets/Scenes/NV1_Test.unity
-    guid: 0e3043ab1cd10fa45b815124fbece4b4
-  - enabled: 1
-    path: Assets/Scenes/TestLevel.unity
-    guid: 6d3544f94e7ae5f4da918a60e006e8eb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
