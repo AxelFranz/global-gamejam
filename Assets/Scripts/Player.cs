@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -211,6 +208,13 @@ public class Player : MonoBehaviour
     private void die()
     {
         Events.Die();
+    }
+
+    private void OnDestroy() {
+        Events.PlayerDetected -= onPlayerDetected;
+        Events.MaskChanged -= onMaskChange;
+        Events.MenuClosed -= onMenuClosed;
+        Events.MenuOpened -= onMenuOpened;
     }
 
 }

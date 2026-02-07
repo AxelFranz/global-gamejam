@@ -27,4 +27,8 @@ public class SmoothCameraFollow : MonoBehaviour
         transform.localEulerAngles = m_rotation;
     }
 
+    private void OnDestroy() {
+        Events.PlayerLoaded -= onPlayerLoaded;
+        }
+
 }

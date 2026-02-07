@@ -49,13 +49,13 @@ public class AmbianceManager : MonoBehaviour
                 m_waterParticleSystem.Stop();
                 break;
             case MaskState.Water:
-                m_volume.profile = m_fireVolumeProfile;
+                m_volume.profile = m_waterVolumeProfile;
                 m_fireParticleSystem.Stop();
                 m_plantParticleSystem.Stop();
                 m_waterParticleSystem.Play();
                 break;
             case MaskState.Plant:
-                m_volume.profile = m_fireVolumeProfile;
+                m_volume.profile = m_plantVolumeProfile;
                 m_fireParticleSystem.Stop();
                 m_plantParticleSystem.Play();
                 m_waterParticleSystem.Stop();
@@ -69,9 +69,7 @@ public class AmbianceManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void OnDestroy() {
+        Events.MaskChanged -= onMaskChanged;
+	}
 }

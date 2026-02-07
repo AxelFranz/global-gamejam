@@ -58,4 +58,10 @@ public class Obstacle : MonoBehaviour
     {
 
     }
+
+	private void OnDestroy() {
+        Events.MaskChanged -= onMaskChanged;
+        Events.ObstacleOffFinished -= onObstacleOffFinished;
+        Events.ObstacleOnFinished -= onObstacleOnFinished;
+	}
 }
